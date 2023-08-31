@@ -2,35 +2,21 @@ import Button from "./Button";
 import styles from "./App.module.css";
 import { useState, useEffect } from "react";
 
-function App() {
-  const [counter, setCounter] = useState(0);
-  const [keyword, setKeyword] = useState("");
-  const onClick = () => setCounter((current) => current + 1);
-  const onChange = (event) => setKeyword(event.target.value);
-
+function Hello() {
   useEffect(() => {
-    console.log("I run only once");
+    console.log("HI :)");
+    return () => console.log("byeeee :(");
   }, []);
-  useEffect(() => {
-    console.log("I run when 'keyword' changes");
-  }, [keyword]);
-  useEffect(() => {
-    console.log("I run when 'counter' changes");
-  }, [counter]);
-  useEffect(() => {
-    console.log("I run when 'keyword' or 'counter' changes");
-  }, [keyword, counter]);
+  return <h1>Hello</h1>;
+}
 
+function App() {
+  const [visible, setVisible] = useState(false);
+  const onClick = () => setVisible((current) => !current);
   return (
     <div>
-      <input
-        value={keyword}
-        onChange={onChange}
-        type="text"
-        placeholder="Search here..."
-      />
-      <h1>{counter}</h1>
-      <Button text="Click" onClick={onClick} />
+      <button onClick={onClick}>{visible ? "Hide" : "Show"}</button>
+      {visible ? <Hello /> : null}
     </div>
   );
 }
