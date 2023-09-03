@@ -1,22 +1,35 @@
-import Button from "./Button";
-import styles from "./App.module.css";
-import { useState, useEffect } from "react";
-
-function Hello() {
-  useEffect(() => {
-    console.log("HI :)");
-    return () => console.log("byeeee :(");
-  }, []);
-  return <h1>Hello</h1>;
-}
+import { useState } from "react";
 
 function App() {
-  const [visible, setVisible] = useState(false);
-  const onClick = () => setVisible((current) => !current);
+  const [toDo, setToDo] = useState("");
+  const [toDos, setToDos] = useState([]);
+  const onChange = (event) => setToDo(event.target.value);
+  const onSubmit = (event) => {
+    event.preventDefault();
+    if (toDo === "") {
+      return;
+    }
+    setToDos((currentToDos) => [toDo, ...currentToDos]);
+    setToDo("");
+  };
   return (
     <div>
-      <button onClick={onClick}>{visible ? "Hide" : "Show"}</button>
-      {visible ? <Hello /> : null}
+      <h1>My ToDos ({toDos.length})</h1>
+      <form onSubmit={onSubmit}>
+        <input
+          onChange={onChange}
+          value={toDo}
+          type="text"
+          placeholder="Write your to do..."
+        />
+        <button>Add To Do</button>
+      </form>
+      <hr />
+      <ul>
+        {toDos.map((toDo, idx) => (
+          <li key={idx}>{toDo}</li>
+        ))}
+      </ul>
     </div>
   );
 }
