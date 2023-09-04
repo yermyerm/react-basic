@@ -6,7 +6,7 @@ function App() {
   const [selectedCoin, setSelectedCoin] = useState("");
   const moneyInput = (event) => setMoney(event.target.value);
   const onSelect = (event) => {
-    setSelectedCoin(event.target.selectedIndex);
+    setSelectedCoin(coins[event.target.selectedIndex]);
   };
   useEffect(() => {
     fetch("https://api.coinpaprika.com/v1/tickers?optionmit=50")
@@ -21,8 +21,11 @@ function App() {
       <h1>The Coins</h1>
       {loading ? "Loading..." : <h2>Money Calculator</h2>}
       <input onChange={moneyInput} value={money} type="number" /> USD is{" "}
-      {money / coins[selectedCoin].quotes.USD.price}{" "}
-      {coins[selectedCoin].symbol}
+      {selectedCoin.hasOwnProperty("quotes")
+        ? Math.round((100 * money) / selectedCoin.quotes.USD.price) / 100
+        : null}{" "}
+      {selectedCoin.hasOwnProperty("symbol") ? selectedCoin.symbol : null}
+      <br></br>
       <select onChange={onSelect}>
         {coins.map((coin) => (
           <option key={coin.id}>
