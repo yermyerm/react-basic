@@ -4,12 +4,17 @@ function App() {
   const [toDo, setToDo] = useState("");
   const [toDos, setToDos] = useState([]);
   const onChange = (event) => setToDo(event.target.value);
+  const deleteToDo = (idx) => {
+    setToDos((currentToDos) =>
+      currentToDos.filter((toDo, toDoIdx) => idx !== toDoIdx)
+    );
+  };
   const onSubmit = (event) => {
     event.preventDefault();
     if (toDo === "") {
       return;
     }
-    setToDos((currentToDos) => [toDo, ...currentToDos]);
+    setToDos((currentToDos) => [...currentToDos, toDo]);
     setToDo("");
   };
   return (
@@ -27,7 +32,10 @@ function App() {
       <hr />
       <ul>
         {toDos.map((toDo, idx) => (
-          <li key={idx}>{toDo}</li>
+          <li key={idx}>
+            {toDo}
+            <button onClick={() => deleteToDo(idx)}>×</button>
+          </li>
         ))}
       </ul>
     </div>
