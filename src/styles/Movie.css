@@ -1,0 +1,16 @@
+#gridMovie {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  margin: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+#gridMovie .cover {
+  width: 200px;
+  margin: 10px;
+}
+#gridMovie .description {
+  margin: 0px 10px;
+}
+.title {
+  color: black;
+}
