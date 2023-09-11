@@ -7,10 +7,24 @@
 #gridMovie .cover {
   width: 200px;
   margin: 10px;
+  border-radius: 15px;
 }
 #gridMovie .description {
   margin: 0px 10px;
 }
-.title {
-  color: black;
+.title Link {
+  text-decoration: none !important;
+  color: lightgray;
+}
+
+.genres {
+  padding: 0px;
+  margin: 0px;
+}
+.genres li {
+  display: inline-block;
+  margin: 0px 10px 8px 0px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background-color: lightgray;
 }
