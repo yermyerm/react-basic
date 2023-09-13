@@ -13,7 +13,9 @@ const StyledLink = styled(Link)`
 function Movie({ id, coverImg, title, summary, genres, rating }) {
   return (
     <div id="gridMovie">
-      <img className="cover" src={coverImg} />
+      <Link to={`/movie/${id}`}>
+        <img className="cover" src={coverImg} />
+      </Link>
       <div className="description">
         <h2 className="title">
           <StyledLink to={`/movie/${id}`}>{title}</StyledLink>
