@@ -1,20 +1,17 @@
 #gridMovie {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  margin: 10px 20px;
-  background-color: rgba(255, 255, 255, 0.5);
+  /* display: grid;
+  grid-template-columns: 220px 1fr; */
+  margin: 0px auto 80px auto;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0);
 }
 #gridMovie .cover {
-  width: 200px;
+  width: 250px;
   margin: 10px;
   border-radius: 15px;
 }
 #gridMovie .description {
   margin: 0px 10px;
-}
-.title Link {
-  text-decoration: none !important;
-  color: lightgray;
 }
 
 .genres {
@@ -26,5 +23,6 @@
   margin: 0px 10px 8px 0px;
   padding: 2px 8px;
   border-radius: 10px;
-  background-color: lightgray;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: black;
 }

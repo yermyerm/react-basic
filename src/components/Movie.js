@@ -6,7 +6,7 @@ import { FaStar } from "react-icons/fa";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: white;
   font-weight: 900;
 `;
 
@@ -23,7 +23,6 @@ function Movie({ id, coverImg, title, summary, genres, rating }) {
             <li key={g}>{g}</li>
           ))}
         </ul>
-        <p className="summary">{summary}</p>
       </div>
     </div>
   );

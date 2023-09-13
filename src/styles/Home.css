@@ -1,4 +1,15 @@
-#body {
+body {
+  margin: 0;
+  background-color: black;
+  color: white;
+}
+
+h1#appTitle {
+  text-align: center;
+  font-size: 60px;
+}
+
+#root {
   width: 1200px;
   margin: auto;
   font-family: "Pretendard-Regular";
@@ -6,11 +17,12 @@
 
 #loading {
   text-align: center;
+  font-weight: 300;
 }
 
 #gridHome {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 @font-face {

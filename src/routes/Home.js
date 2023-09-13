@@ -18,19 +18,19 @@ function Home() {
     getMovies();
   }, []);
   return (
-    <div id="body">
+    <div>
+      <h1 id="appTitle">THE MOVIE</h1>
       {loading ? (
-        <h1 id="loading">Loading...</h1>
+        <h2 id="loading">Loading...</h2>
       ) : (
         <div id="gridHome">
           {movies.map((movie) => (
             <Movie
-              key={movie.id}
+              id={movie.id}
               coverImg={movie.medium_cover_image}
               title={movie.title_long}
               summary={movie.summary}
               genres={movie.genres}
-              id={movie.id}
               rating={movie.rating}
             />
           ))}

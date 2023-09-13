@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import MovieDetail from "../components/MovieDetail";
 import Movie from "../components/Movie";
+import styles from "../styles/Detail.css";
 
 function Detail() {
   const { id } = useParams();
@@ -22,7 +24,6 @@ function Detail() {
       await fetch(`https://yts.mx/api/v2/movie_suggestions/json?movie_id=${id}`)
     ).json();
     setSuggest(json.data.movies);
-    console.log(suggest);
   };
   useEffect(() => {
     getSuggestion();
@@ -31,33 +32,28 @@ function Detail() {
   return (
     <div>
       {loading ? (
-        <h1>Loading...</h1>
+        <h2 id="loading">Loading...</h2>
       ) : (
-        <div id="theMovie">
-          <img src={movie.large_cover_image} />
-          <h1>{movie.title_long}</h1>
-          <h2>rating: {movie.rating}</h2>
-          <p>Genres: {movie.genres}</p>
-          <p>{movie.description_full}</p>
-          <p>
-            <iframe
-              width="560"
-              height="315"
-              src={`https://www.youtube.com/embed/${movie.yt_trailer_code}`}
-              title="Official Trailer Youtube"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
-          </p>
+        <div>
+          <MovieDetail
+            id={movie.id}
+            coverImg={movie.large_cover_image}
+            title={movie.title}
+            year={movie.year}
+            summary={movie.description_full}
+            genres={movie.genres}
+            rating={movie.rating}
+            trailer={movie.yt_trailer_code}
+          />
+          <h2>비슷한 영화</h2>
           <div id="movieSuggest">
             {suggest.map((movie) => (
               <Movie
-                key={movie.id}
+                id={movie.id}
                 coverImg={movie.medium_cover_image}
                 title={movie.title_long}
                 summary={movie.summary}
                 genres={movie.genres}
-                id={movie.id}
                 rating={movie.rating}
               />
             ))}
