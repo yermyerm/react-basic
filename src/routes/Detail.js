@@ -37,6 +37,7 @@ function Detail() {
         <div>
           <MovieDetail
             id={movie.id}
+            key={movie.id}
             coverImg={movie.large_cover_image}
             title={movie.title}
             year={movie.year}
@@ -50,6 +51,7 @@ function Detail() {
             {suggest.map((movie) => (
               <Movie
                 id={movie.id}
+                key={movie.id}
                 coverImg={movie.medium_cover_image}
                 title={movie.title_long}
                 summary={movie.summary}
