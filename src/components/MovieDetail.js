@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { FaStar } from "react-icons/fa";
+import RatingStar from "../components/RatingStar";
 
 function MovieDetail({
   coverImg,
@@ -20,7 +19,10 @@ function MovieDetail({
       <div id="movieInfo">
         <h1 className="inline">{title}</h1>
         <h2 className="inline">({year})</h2>
-        <h2 id="rating">평점 {rating}</h2>
+        <div id="rating">
+          <RatingStar className="inline" rating={rating} color="gold" />{" "}
+          {rating}
+        </div>
         <ul className="genres">
           {genres.map((g) => (
             <li key={g}>{g}</li>

@@ -11,12 +11,13 @@
 }
 
 #movieInfo #rating {
-  margin: 10px 0px 30px 0px;
+  margin: 20px 0px 30px 0px;
+  font-size: x-large;
 }
 
 #movieSuggest {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 300px 300px 300px 300px;
 }
 
 #movieSuggest.cover {

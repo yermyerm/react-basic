@@ -1,28 +1,37 @@
 #gridMovie {
   /* display: grid;
   grid-template-columns: 220px 1fr; */
-  margin: 0px auto 80px auto;
+  margin: 0px auto 60px auto;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0);
+  position: relative;
 }
-#gridMovie .cover {
-  width: 250px;
+#gridMovie #cover {
   margin: 10px;
   border-radius: 15px;
 }
-#gridMovie .description {
+#gridMovie #description {
   margin: 0px 10px;
 }
 
-.genres {
+#star {
+  margin: 0px 0px 20px 0px;
+  font-size: larger;
+}
+
+#genres {
   padding: 0px;
   margin: 0px;
 }
-.genres li {
+#genres li {
   display: inline-block;
   margin: 0px 10px 8px 0px;
   padding: 2px 8px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.4);
   color: black;
+}
+
+.inline-block {
+  display: inline-block;
 }

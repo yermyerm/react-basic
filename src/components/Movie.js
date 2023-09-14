@@ -2,7 +2,8 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import styles from "../styles/Movie.css";
-import { FaStar } from "react-icons/fa";
+import { useState } from "react";
+import RatingStar from "../components/RatingStar";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -11,16 +12,25 @@ const StyledLink = styled(Link)`
 `;
 
 function Movie({ id, coverImg, title, summary, genres, rating }) {
+  const [hover, setHover] = useState(0);
   return (
-    <div id="gridMovie">
+    <div
+      id="gridMovie"
+      onMouseOver={() => setHover(1)}
+      onMouseOut={() => setHover(0)}
+      style={hover ? { left: "-20px" } : null}
+    >
       <Link to={`/movie/${id}`}>
-        <img className="cover" src={coverImg} />
+        <img id="cover" src={coverImg} width={hover ? "300px" : "250px"} />
       </Link>
-      <div className="description">
-        <h2 className="title">
+      <div id="description">
+        <h2 id="title" className="inline-block">
           <StyledLink to={`/movie/${id}`}>{title}</StyledLink>
         </h2>
-        <ul className="genres">
+        {hover ? (
+          <RatingStar className="inline-block" color="white" rating={rating} />
+        ) : null}
+        <ul id="genres">
           {genres.map((g) => (
             <li key={g}>{g}</li>
           ))}

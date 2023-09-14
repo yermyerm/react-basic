@@ -18,7 +18,7 @@ function Detail() {
   };
   useEffect(() => {
     getDetail();
-  }, []);
+  }, [movie]);
   const getSuggestion = async () => {
     const json = await (
       await fetch(`https://yts.mx/api/v2/movie_suggestions/json?movie_id=${id}`)
@@ -27,7 +27,7 @@ function Detail() {
   };
   useEffect(() => {
     getSuggestion();
-  }, []);
+  }, [movie]);
 
   return (
     <div>

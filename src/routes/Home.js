@@ -5,18 +5,38 @@ import styles from "../styles/Home.css";
 function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+
   const getMovies = async () => {
     const json = await (
       await fetch(
-        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8&with_rt_ratings`
+        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&page=${page}`
       )
     ).json();
-    setMovies(json.data.movies);
+    setMovies((prev) => [...prev, ...json.data.movies]);
     setLoading(false);
   };
+
   useEffect(() => {
+    const options = {
+      root: document.querySelector("#scrollArea"),
+      rootMargin: "0px",
+      threshold: 0.5,
+    };
+
+    const scrollMovies = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        console.log("Intersection detected");
+        setPage((prev) => prev + 1);
+      }
+    }, options);
+
+    const targetElement = document.querySelector("#scrollArea");
+    scrollMovies.observe(targetElement);
+
     getMovies();
-  }, []);
+  }, [page]);
+
   return (
     <div>
       <h1 id="appTitle">THE MOVIE</h1>
@@ -37,6 +57,9 @@ function Home() {
           ))}
         </div>
       )}
+      <div id="scrollArea">
+        <p>loading...</p>
+      </div>
     </div>
   );
 }
