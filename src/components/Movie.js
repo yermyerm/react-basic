@@ -18,7 +18,7 @@ function Movie({ id, coverImg, title, summary, genres, rating }) {
       id="gridMovie"
       onMouseOver={() => setHover(1)}
       onMouseOut={() => setHover(0)}
-      style={hover ? { left: "-20px" } : null}
+      style={hover ? { left: "-25px" } : null}
     >
       <Link to={`/movie/${id}`}>
         <img id="cover" src={coverImg} width={hover ? "300px" : "250px"} />
@@ -30,11 +30,13 @@ function Movie({ id, coverImg, title, summary, genres, rating }) {
         {hover ? (
           <RatingStar className="inline-block" color="white" rating={rating} />
         ) : null}
-        <ul id="genres">
-          {genres.map((g) => (
-            <li key={g}>{g}</li>
-          ))}
-        </ul>
+        {hover ? (
+          <ul id="genres">
+            {genres.map((g) => (
+              <li key={g}>{g}</li>
+            ))}
+          </ul>
+        ) : null}
       </div>
     </div>
   );

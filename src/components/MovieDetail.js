@@ -23,7 +23,7 @@ function MovieDetail({
           <RatingStar className="inline" rating={rating} color="gold" />{" "}
           {rating}
         </div>
-        <ul className="genres">
+        <ul id="genres">
           {genres.map((g) => (
             <li key={g}>{g}</li>
           ))}
